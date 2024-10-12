@@ -1,10 +1,10 @@
-import { Img, Titulo, Precos } from './styles'
+import { Image, Titulo, Precos } from './styles'
 import bannerImg from '../../assets/banner-homem-aranha.png'
 import Tag from '../Tag'
 import Button from '../Button'
 
 const Banner = () => (
-  <Img
+  <Image
     style={{
       backgroundImage: `url(${bannerImg})`
     }}
@@ -20,13 +20,13 @@ const Banner = () => (
       </div>
       <Button
         type="link"
-        to="./produto"
+        to="./product"
         title="Clique aqui para aproveitar essa oferta!"
       >
         Aproveitar
       </Button>
     </div>
-  </Img>
+  </Image>
 )
 
 export default Banner

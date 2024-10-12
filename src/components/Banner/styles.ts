@@ -3,12 +3,13 @@ import { cores } from '../../global'
 import { TagContainer } from '../Tag/styles'
 
 //div principal
-export const Img = styled.div`
-  width: 100%;
-  height: 560px;
+export const Image = styled.div`
   display: block;
+  height: 590px;
+  width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+
   color: ${cores.branca};
   font-weight: bold;
 
