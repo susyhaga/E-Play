@@ -97,7 +97,11 @@ export const ModalContent = styled.div`
     }
   }
 
-  img {
+  > img {
+    width: 100%;
+  }
+  img,
+  iframe {
     display: block;
     width: auto;
     height: auto;

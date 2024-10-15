@@ -1,20 +1,14 @@
 {
   "files": {
-    "main.js": "/static/js/main.bc3bbfc4.js",
+    "main.js": "/static/js/main.94b5539b.js",
     "static/js/453.438cb1da.chunk.js": "/static/js/453.438cb1da.chunk.js",
-    "static/media/fundo_hogwarts.png": "/static/media/fundo_hogwarts.4ef34349aa26884ed6e6.png",
-    "static/media/banner-homem-aranha.png": "/static/media/banner-homem-aranha.9588138eed68479bd437.png",
-    "static/media/star_wars.png": "/static/media/star_wars.897f1b0e1372a4bfcea0.png",
-    "static/media/diablo.png": "/static/media/diablo.6c7a206014f3914ca6d6.png",
-    "static/media/resident.png": "/static/media/resident.f6ce0bb119aaf6008aa4.png",
-    "static/media/zelda.png": "/static/media/zelda.295884e1396033d44cf8.png",
     "static/media/carrinho.svg": "/static/media/carrinho.fa2ae382db50cd1d44462c9447536330.svg",
     "static/media/logo.svg": "/static/media/logo.ec1aaacf9086198ceaa2b38667f61c7f.svg",
     "index.html": "/index.html",
-    "main.bc3bbfc4.js.map": "/static/js/main.bc3bbfc4.js.map",
+    "main.94b5539b.js.map": "/static/js/main.94b5539b.js.map",
     "453.438cb1da.chunk.js.map": "/static/js/453.438cb1da.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.bc3bbfc4.js"
+    "static/js/main.94b5539b.js"
   ]
 }

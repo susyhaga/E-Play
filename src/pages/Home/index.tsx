@@ -1,103 +1,64 @@
+import { useEffect, useState } from 'react'
+
 import Banner from '../../components/Banner'
 import ProductsList from '../../components/ProductsList'
-import Game from '../../models/Games'
 
 import resident from '../../assets/resident.png'
 import diablo from '../../assets/diablo.png'
 import starWars from '../../assets/star_wars.png'
 import zelda from '../../assets/zelda.png'
 
-//Game = models usado no ProductsList
-const promocoes: Game[] = [
-  {
-    id: 1,
-    title: 'Resident Evil 4 - Remake',
-    category: 'Ação',
-    system: 'Windows',
-    description:
-      'Resident Evil 4, conhecido no Japão como Biohazard 4, é um jogo eletrônico de survival horror...',
-    infos: ['R$199,90', '-10 %'],
-    image: resident
-  },
-  {
-    id: 2,
-    title: 'Resident Evil 4 - Remake',
-    category: 'Ação',
-    system: 'Windows',
-    description:
-      'Resident Evil 4, conhecido no Japão como Biohazard 4, é um jogo eletrônico de survival horror...',
-    infos: ['R$250,00 ', '-5%'],
-    image: resident
-  },
-  {
-    id: 3,
-    title: 'Resident Evil 4 - Remake',
-    category: 'Ação',
-    system: 'PS5',
-    description:
-      'Resident Evil 4, conhecido no Japão como Biohazard 4, é um jogo eletrônico de survival horror...',
-    infos: ['R$299,90', '-10%'],
-    image: resident
-  },
-  {
-    id: 4,
-    title: 'Resident Evil 4 - Remake',
-    category: 'Ação',
-    system: 'PS5',
-    description:
-      'Resident Evil 4, conhecido no Japão como Biohazard 4, é um jogo eletrônico de survival horror...',
-    infos: ['R$300,00', '-8%'],
-    image: resident
-  }
-]
+//heranca
+//exportar para Game na prop gallery
+export interface GalleryItem {
+  type: 'image' | 'video'
+  url: string
+}
 
-const emBreve: Game[] = [
-  {
-    id: 5,
-    title: 'Diablo 4',
-    category: 'RPG',
-    system: 'Windows',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    infos: ['17/05'],
-    image: diablo
-  },
-  {
-    id: 6,
-    title: 'Zelda',
-    category: 'RPG',
-    system: 'Windows',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    infos: ['17/05'],
-    image: zelda
-  },
-  {
-    id: 7,
-    title: 'Star Wars',
-    category: 'RPG',
-    system: 'Windows',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    infos: ['17/05'],
-    image: starWars
-  },
-  {
-    id: 8,
-    title: 'Resident Evil 5',
-    category: 'RPG',
-    system: 'Windows',
-    description:
-      'Diablo IV é um RPG de ação em desenvolvimento pela Blizzard Entertainment.',
-    infos: ['17/05'],
-    image: resident
+export type Game = {
+  id: number
+  name: string
+  description: string
+  release_date?: string
+  prices: {
+    discount?: number
+    old?: number
+    current?: number
   }
-]
-const Home = () => (
-  <>
-    <Banner />
-    <ProductsList games={promocoes} title="Promoções" background="gray" />
-    <ProductsList games={emBreve} title="Em breve" background="black" />
-  </>
-)
+  details: {
+    category: string
+    system: string
+    developer: string
+    publisher: string
+    languages: string[]
+  }
+  media: {
+    thumbnail: string
+    cover: string
+    gallery: GalleryItem[]
+  }
+}
+const Home = () => {
+  const [promocoes, setPromocoes] = useState<Game[]>([])
+  const [emBreve, setEmBreve] = useState<Game[]>([])
+
+  //fazendo a requisicao da API
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/eplay/promocoes')
+      .then((res) => res.json())
+      .then((res) => setPromocoes(res))
+    fetch('https://fake-api-tau.vercel.app/api/eplay/em-breve')
+      .then((res) => res.json())
+      .then((res) => setEmBreve(res))
+  }, [])
+  return (
+    <>
+      {/* integrando o Banner com a API */}
+      <Banner />
+
+      <ProductsList games={promocoes} title="Promoções" background="gray" />
+      <ProductsList games={emBreve} title="Em breve" background="black" />
+    </>
+  )
+}
 export default Home

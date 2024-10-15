@@ -1,8 +1,6 @@
 import Section from '../Section'
 import { Action, Item, ItemsList, Modal, ModalContent } from './styles'
 
-import spider from '../../assets/banner-homem-aranha.png'
-import hogwarts from '../../assets/fundo_hogwarts.png'
 import play from '../../assets/play.png'
 import zoom from '../../assets/zoom.png'
 import close from '../../assets/close.png'
@@ -13,25 +11,11 @@ interface GalleryItem {
   type: 'image' | 'video'
   url: string
 }
-//codigo mockado (codigo hardcode) usao paenas para preencher o espaco vazio
-const mock: GalleryItem[] = [
-  {
-    type: 'image',
-    url: spider
-  },
-  {
-    type: 'image',
-    url: hogwarts
-  },
-  {
-    type: 'video',
-    url: 'https://www.youtube.com/embed/uHGShqcAHlQ'
-  }
-]
 
 type Props = {
   defaultCover: string
   name: string
+  items: GalleryItem[]
 }
 
 //modal herda de GalleryItem  usado no usestate modal
@@ -39,7 +23,7 @@ interface ModalState extends GalleryItem {
   isVisible: boolean
 }
 //criando imagem de exibicao do video
-const Gallery = ({ defaultCover, name }: Props) => {
+const Gallery = ({ defaultCover, name, items }: Props) => {
   //modal
   const [modal, setModal] = useState<ModalState>({
     isVisible: false,
@@ -68,7 +52,7 @@ const Gallery = ({ defaultCover, name }: Props) => {
     <>
       <Section title={'Galeria'} background={'black'}>
         <ItemsList>
-          {mock.map((media, index) => (
+          {items.map((media, index) => (
             //setMODALS
             <Item
               key={media.url}

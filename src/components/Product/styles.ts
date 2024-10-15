@@ -1,12 +1,23 @@
 import { styled } from 'styled-components'
+import { Link } from 'react-router-dom'
 import { cores } from '../../global'
 import { TagContainer } from '../Tag/styles'
 
-export const Card = styled.div`
+export const Card = styled(Link)`
   position: relative;
   background-color: ${cores.preta};
   border-radius: 8px;
   padding: 8px;
+  text-decoration: none;
+  color: ${cores.branca};
+  display: block;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
 
   //uso e customização do componente estilizado Tag
   ${TagContainer} {
